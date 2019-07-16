@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import { getPosts, loadPostsRequest } from '../../../redux/PostsRedux';
+import { getPostsCount, loadPostsRequest } from '../../../redux/PostsRedux';
 import PostsCounter from './PostsCounter';
 
 const mapStateToProps = state => ({
-  posts: getPosts(state),
+  postsCount: getPostsCount(state)
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadPosts: () => dispatch(loadPostsRequest()),
+  loadPosts: () => dispatch(loadPostsRequest())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsCounter);

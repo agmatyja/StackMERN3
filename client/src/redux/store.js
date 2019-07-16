@@ -5,7 +5,7 @@ import posts from './PostsRedux';
 
 // combine reducers
 const rootReducer = combineReducers({
-  posts,
+  posts
 });
 
 const store = createStore(
