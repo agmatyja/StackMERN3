@@ -15,19 +15,16 @@ class Posts extends React.Component {
   render() {
     const { posts, request } = this.props;
 
-    return (
-      <div>
-	  {!request.pending && request.success && posts.length > 0 ? <PostsList posts={posts} /> :
-	   request.pending || request.success === null  ? <Spinner /> :
-       !request.pending && request.error !== null && request.error !== undefined ? <Alert variant="error"> {request.error}</Alert> : 
-       !request.pending && request.success && posts.length === 0 ? <Alert variant="info"> No posts </Alert> :
-	   <Spinner/>
-	  }
-	  </div>
-    );
+     if (!request.pending && request.success && posts.length > 0) 
+         return <PostsList posts={posts} />;
+     if (request.pending || request.success === null)
+         return <Spinner />;
+     if (!request.pending && request.error !== null && request.error !== undefined)
+         return <Alert variant="error">{request.error}</Alert>;
+     if (!request.pending && request.success && posts.length === 0) 
+         return <Alert variant="info">No posts</Alert>;
+     return <Spinner />;
   }
-
- 
 
 };
 
